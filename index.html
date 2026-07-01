@@ -271,6 +271,33 @@
     font-weight: 500;
   }
 
+  .example-sentence {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    width: 100%;
+    text-align: left;
+  }
+
+  .example-zh {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    font-family: 'Noto Serif SC', 'SimSun', serif;
+    margin-bottom: 2px;
+  }
+
+  .example-pinyin {
+    font-size: 0.82rem;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
+
+  .example-ja {
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
   .next-btn {
     width: 100%;
     padding: 14px;
@@ -383,156 +410,172 @@
 
 <script>
 const WORDS = [
-  { chinese:'一', pinyin:'yī', katakana:'イー', meaning:'1', category:'数字' },
-  { chinese:'二', pinyin:'èr', katakana:'アル', meaning:'2', category:'数字' },
-  { chinese:'三', pinyin:'sān', katakana:'サン', meaning:'3', category:'数字' },
-  { chinese:'四', pinyin:'sì', katakana:'スー', meaning:'4', category:'数字' },
-  { chinese:'五', pinyin:'wǔ', katakana:'ウー', meaning:'5', category:'数字' },
-  { chinese:'六', pinyin:'liù', katakana:'リィウ', meaning:'6', category:'数字' },
-  { chinese:'七', pinyin:'qī', katakana:'チー', meaning:'7', category:'数字' },
-  { chinese:'八', pinyin:'bā', katakana:'バー', meaning:'8', category:'数字' },
-  { chinese:'九', pinyin:'jiǔ', katakana:'ジゥ', meaning:'9', category:'数字' },
-  { chinese:'十', pinyin:'shí', katakana:'シー', meaning:'10', category:'数字' },
-  { chinese:'我', pinyin:'wǒ', katakana:'ウォー', meaning:'私', category:'代詞' },
-  { chinese:'你', pinyin:'nǐ', katakana:'ニー', meaning:'あなた', category:'代詞' },
-  { chinese:'他', pinyin:'tā', katakana:'ター', meaning:'彼', category:'代詞' },
-  { chinese:'她', pinyin:'tā', katakana:'ター', meaning:'彼女', category:'代詞' },
-  { chinese:'我们', pinyin:'wǒmen', katakana:'ウォーメン', meaning:'私たち', category:'代詞' },
-  { chinese:'他们', pinyin:'tāmen', katakana:'ターメン', meaning:'彼ら', category:'代詞' },
-  { chinese:'这', pinyin:'zhè', katakana:'ジャー', meaning:'これ', category:'代詞' },
-  { chinese:'那', pinyin:'nà', katakana:'ナー', meaning:'それ・あれ', category:'代詞' },
-  { chinese:'哪', pinyin:'nǎ', katakana:'ナー', meaning:'どれ', category:'代詞' },
-  { chinese:'哪儿', pinyin:'nǎr', katakana:'ナール', meaning:'どこ', category:'代詞' },
-  { chinese:'谁', pinyin:'shéi', katakana:'シェイ', meaning:'誰', category:'代詞' },
-  { chinese:'什么', pinyin:'shénme', katakana:'シェンマ', meaning:'何', category:'代詞' },
-  { chinese:'怎么', pinyin:'zěnme', katakana:'ゼンマ', meaning:'どうやって', category:'代詞' },
-  { chinese:'怎么样', pinyin:'zěnmeyàng', katakana:'ゼンマヤン', meaning:'どうですか', category:'代詞' },
-  { chinese:'几', pinyin:'jǐ', katakana:'ジー', meaning:'いくつ', category:'代詞' },
-  { chinese:'多少', pinyin:'duōshao', katakana:'ドゥオシャオ', meaning:'どのくらい', category:'代詞' },
-  { chinese:'个', pinyin:'gè', katakana:'ガ', meaning:'（個数を数える助数詞）', category:'量詞' },
-  { chinese:'本', pinyin:'běn', katakana:'ベン', meaning:'（本を数える助数詞）', category:'量詞' },
-  { chinese:'块', pinyin:'kuài', katakana:'クァイ', meaning:'（お金・塊を数える）', category:'量詞' },
-  { chinese:'些', pinyin:'xiē', katakana:'シエ', meaning:'いくつかの', category:'量詞' },
-  { chinese:'是', pinyin:'shì', katakana:'シー', meaning:'～です', category:'動詞' },
-  { chinese:'有', pinyin:'yǒu', katakana:'ヨウ', meaning:'持っている', category:'動詞' },
-  { chinese:'没有', pinyin:'méiyǒu', katakana:'メイヨウ', meaning:'持っていない', category:'動詞' },
-  { chinese:'在', pinyin:'zài', katakana:'ザイ', meaning:'～にいる', category:'動詞' },
-  { chinese:'叫', pinyin:'jiào', katakana:'ジアオ', meaning:'～という名前', category:'動詞' },
-  { chinese:'认识', pinyin:'rènshi', katakana:'レンシ', meaning:'知り合う', category:'動詞' },
-  { chinese:'喜欢', pinyin:'xǐhuan', katakana:'シーホワン', meaning:'好き', category:'動詞' },
-  { chinese:'爱', pinyin:'ài', katakana:'アイ', meaning:'愛する', category:'動詞' },
-  { chinese:'想', pinyin:'xiǎng', katakana:'シアン', meaning:'～したい', category:'動詞' },
-  { chinese:'会', pinyin:'huì', katakana:'ホイ', meaning:'できる（習得）', category:'動詞' },
-  { chinese:'能', pinyin:'néng', katakana:'ノン', meaning:'できる（能力）', category:'動詞' },
-  { chinese:'去', pinyin:'qù', katakana:'チュー', meaning:'行く', category:'動詞' },
-  { chinese:'来', pinyin:'lái', katakana:'ライ', meaning:'来る', category:'動詞' },
-  { chinese:'回', pinyin:'huí', katakana:'ホイ', meaning:'帰る', category:'動詞' },
-  { chinese:'开', pinyin:'kāi', katakana:'カイ', meaning:'開く・運転する', category:'動詞' },
-  { chinese:'吃', pinyin:'chī', katakana:'チー', meaning:'食べる', category:'動詞' },
-  { chinese:'喝', pinyin:'hē', katakana:'ハー', meaning:'飲む', category:'動詞' },
-  { chinese:'看', pinyin:'kàn', katakana:'カン', meaning:'見る', category:'動詞' },
-  { chinese:'看见', pinyin:'kànjiàn', katakana:'カンジエン', meaning:'見える', category:'動詞' },
-  { chinese:'听', pinyin:'tīng', katakana:'ティン', meaning:'聞く', category:'動詞' },
-  { chinese:'说', pinyin:'shuō', katakana:'シュオ', meaning:'話す', category:'動詞' },
-  { chinese:'读', pinyin:'dú', katakana:'ドゥー', meaning:'読む', category:'動詞' },
-  { chinese:'写', pinyin:'xiě', katakana:'シエ', meaning:'書く', category:'動詞' },
-  { chinese:'买', pinyin:'mǎi', katakana:'マイ', meaning:'買う', category:'動詞' },
-  { chinese:'做', pinyin:'zuò', katakana:'ズオ', meaning:'する・作る', category:'動詞' },
-  { chinese:'坐', pinyin:'zuò', katakana:'ズオ', meaning:'座る', category:'動詞' },
-  { chinese:'住', pinyin:'zhù', katakana:'ジュー', meaning:'住む', category:'動詞' },
-  { chinese:'睡觉', pinyin:'shuìjiào', katakana:'シュイジアオ', meaning:'寝る', category:'動詞' },
-  { chinese:'打电话', pinyin:'dǎ diànhuà', katakana:'ダー ディエンホワ', meaning:'電話をかける', category:'動詞' },
-  { chinese:'下雨', pinyin:'xiàyǔ', katakana:'シアユー', meaning:'雨が降る', category:'動詞' },
-  { chinese:'工作', pinyin:'gōngzuò', katakana:'ゴンズオ', meaning:'仕事をする', category:'動詞' },
-  { chinese:'学习', pinyin:'xuéxí', katakana:'シュエシー', meaning:'学ぶ', category:'動詞' },
-  { chinese:'大', pinyin:'dà', katakana:'ダー', meaning:'大きい', category:'形容詞' },
-  { chinese:'小', pinyin:'xiǎo', katakana:'シアオ', meaning:'小さい', category:'形容詞' },
-  { chinese:'多', pinyin:'duō', katakana:'ドゥオ', meaning:'多い', category:'形容詞' },
-  { chinese:'少', pinyin:'shǎo', katakana:'シャオ', meaning:'少ない', category:'形容詞' },
-  { chinese:'好', pinyin:'hǎo', katakana:'ハオ', meaning:'良い', category:'形容詞' },
-  { chinese:'冷', pinyin:'lěng', katakana:'レン', meaning:'寒い', category:'形容詞' },
-  { chinese:'热', pinyin:'rè', katakana:'ロァ', meaning:'熱い', category:'形容詞' },
-  { chinese:'漂亮', pinyin:'piàoliang', katakana:'ピアオリアン', meaning:'きれい', category:'形容詞' },
-  { chinese:'高兴', pinyin:'gāoxìng', katakana:'ガオシン', meaning:'嬉しい', category:'形容詞' },
-  { chinese:'爸爸', pinyin:'bàba', katakana:'バーバ', meaning:'お父さん', category:'名詞(人)' },
-  { chinese:'妈妈', pinyin:'māma', katakana:'マーマ', meaning:'お母さん', category:'名詞(人)' },
-  { chinese:'儿子', pinyin:'érzi', katakana:'アルズ', meaning:'息子', category:'名詞(人)' },
-  { chinese:'女儿', pinyin:"nǚ'ér", katakana:'ニュイアル', meaning:'娘', category:'名詞(人)' },
-  { chinese:'朋友', pinyin:'péngyou', katakana:'ポンヨウ', meaning:'友達', category:'名詞(人)' },
-  { chinese:'老师', pinyin:'lǎoshī', katakana:'ラオシー', meaning:'先生', category:'名詞(人)' },
-  { chinese:'学生', pinyin:'xuésheng', katakana:'シュエション', meaning:'学生', category:'名詞(人)' },
-  { chinese:'同学', pinyin:'tóngxué', katakana:'トンシュエ', meaning:'同級生', category:'名詞(人)' },
-  { chinese:'先生', pinyin:'xiānsheng', katakana:'シエンション', meaning:'～さん（男性）', category:'名詞(人)' },
-  { chinese:'小姐', pinyin:'xiǎojiě', katakana:'シアオジエ', meaning:'～さん（女性）', category:'名詞(人)' },
-  { chinese:'医生', pinyin:'yīshēng', katakana:'イーション', meaning:'医者', category:'名詞(人)' },
-  { chinese:'人', pinyin:'rén', katakana:'レン', meaning:'人', category:'名詞(人)' },
-  { chinese:'家', pinyin:'jiā', katakana:'ジア', meaning:'家・家族', category:'名詞(人)' },
-  { chinese:'猫', pinyin:'māo', katakana:'マオ', meaning:'猫', category:'名詞(動物)' },
-  { chinese:'狗', pinyin:'gǒu', katakana:'ゴウ', meaning:'犬', category:'名詞(動物)' },
-  { chinese:'水', pinyin:'shuǐ', katakana:'シュイ', meaning:'水', category:'名詞(食べ物)' },
-  { chinese:'茶', pinyin:'chá', katakana:'チャー', meaning:'お茶', category:'名詞(食べ物)' },
-  { chinese:'米饭', pinyin:'mǐfàn', katakana:'ミーファン', meaning:'ご飯', category:'名詞(食べ物)' },
-  { chinese:'水果', pinyin:'shuǐguǒ', katakana:'シュイグオ', meaning:'果物', category:'名詞(食べ物)' },
-  { chinese:'苹果', pinyin:'píngguǒ', katakana:'ピングオ', meaning:'りんご', category:'名詞(食べ物)' },
-  { chinese:'菜', pinyin:'cài', katakana:'ツァイ', meaning:'料理・野菜', category:'名詞(食べ物)' },
-  { chinese:'杯子', pinyin:'bēizi', katakana:'ベイズ', meaning:'コップ', category:'名詞(物・場所)' },
-  { chinese:'电脑', pinyin:'diànnǎo', katakana:'ディエンナオ', meaning:'パソコン', category:'名詞(物・場所)' },
-  { chinese:'电视', pinyin:'diànshì', katakana:'ディエンシー', meaning:'テレビ', category:'名詞(物・場所)' },
-  { chinese:'电影', pinyin:'diànyǐng', katakana:'ディエンイン', meaning:'映画', category:'名詞(物・場所)' },
-  { chinese:'飞机', pinyin:'fēijī', katakana:'フェイジー', meaning:'飛行機', category:'名詞(物・場所)' },
-  { chinese:'出租车', pinyin:'chūzūchē', katakana:'チューズーチァー', meaning:'タクシー', category:'名詞(物・場所)' },
-  { chinese:'商店', pinyin:'shāngdiàn', katakana:'シャンディエン', meaning:'店', category:'名詞(物・場所)' },
-  { chinese:'饭店', pinyin:'fàndiàn', katakana:'ファンディエン', meaning:'レストラン・ホテル', category:'名詞(物・場所)' },
-  { chinese:'医院', pinyin:'yīyuàn', katakana:'イーユエン', meaning:'病院', category:'名詞(物・場所)' },
-  { chinese:'学校', pinyin:'xuéxiào', katakana:'シュエシアオ', meaning:'学校', category:'名詞(物・場所)' },
-  { chinese:'书', pinyin:'shū', katakana:'シュー', meaning:'本', category:'名詞(物・場所)' },
-  { chinese:'衣服', pinyin:'yīfu', katakana:'イーフ', meaning:'服', category:'名詞(物・場所)' },
-  { chinese:'椅子', pinyin:'yǐzi', katakana:'イーズ', meaning:'椅子', category:'名詞(物・場所)' },
-  { chinese:'东西', pinyin:'dōngxi', katakana:'ドンシ', meaning:'もの', category:'名詞(物・場所)' },
-  { chinese:'钱', pinyin:'qián', katakana:'チエン', meaning:'お金', category:'名詞(物・場所)' },
-  { chinese:'字', pinyin:'zì', katakana:'ズー', meaning:'文字', category:'名詞(物・場所)' },
-  { chinese:'名字', pinyin:'míngzi', katakana:'ミンズ', meaning:'名前', category:'名詞(物・場所)' },
-  { chinese:'中国', pinyin:'Zhōngguó', katakana:'ジョングオ', meaning:'中国', category:'名詞(国・言語)' },
-  { chinese:'北京', pinyin:'Běijīng', katakana:'ベイジン', meaning:'北京', category:'名詞(国・言語)' },
-  { chinese:'汉语', pinyin:'Hànyǔ', katakana:'ハンユー', meaning:'中国語', category:'名詞(国・言語)' },
-  { chinese:'天气', pinyin:'tiānqì', katakana:'ティエンチー', meaning:'天気', category:'名詞(国・言語)' },
-  { chinese:'点', pinyin:'diǎn', katakana:'ディエン', meaning:'～時', category:'時間詞' },
-  { chinese:'分钟', pinyin:'fēnzhōng', katakana:'フェンジョン', meaning:'～分間', category:'時間詞' },
-  { chinese:'年', pinyin:'nián', katakana:'ニエン', meaning:'年', category:'時間詞' },
-  { chinese:'月', pinyin:'yuè', katakana:'ユエ', meaning:'月', category:'時間詞' },
-  { chinese:'星期', pinyin:'xīngqī', katakana:'シンチー', meaning:'週', category:'時間詞' },
-  { chinese:'号', pinyin:'hào', katakana:'ハオ', meaning:'～日', category:'時間詞' },
-  { chinese:'今天', pinyin:'jīntiān', katakana:'ジンティエン', meaning:'今日', category:'時間詞' },
-  { chinese:'明天', pinyin:'míngtiān', katakana:'ミンティエン', meaning:'明日', category:'時間詞' },
-  { chinese:'昨天', pinyin:'zuótiān', katakana:'ズオティエン', meaning:'昨日', category:'時間詞' },
-  { chinese:'现在', pinyin:'xiànzài', katakana:'シエンザイ', meaning:'今', category:'時間詞' },
-  { chinese:'上午', pinyin:'shàngwǔ', katakana:'シャンウー', meaning:'午前', category:'時間詞' },
-  { chinese:'下午', pinyin:'xiàwǔ', katakana:'シアウー', meaning:'午後', category:'時間詞' },
-  { chinese:'中午', pinyin:'zhōngwǔ', katakana:'ジョンウー', meaning:'正午', category:'時間詞' },
-  { chinese:'时候', pinyin:'shíhou', katakana:'シーホウ', meaning:'時', category:'時間詞' },
-  { chinese:'岁', pinyin:'suì', katakana:'スイ', meaning:'～歳', category:'時間詞' },
-  { chinese:'上', pinyin:'shàng', katakana:'シャン', meaning:'上', category:'方位詞' },
-  { chinese:'下', pinyin:'xià', katakana:'シア', meaning:'下', category:'方位詞' },
-  { chinese:'里', pinyin:'lǐ', katakana:'リー', meaning:'～の中', category:'方位詞' },
-  { chinese:'前面', pinyin:'qiánmiàn', katakana:'チエンミエン', meaning:'前', category:'方位詞' },
-  { chinese:'后面', pinyin:'hòumiàn', katakana:'ホウミエン', meaning:'後ろ', category:'方位詞' },
-  { chinese:'很', pinyin:'hěn', katakana:'ヘン', meaning:'とても', category:'副詞' },
-  { chinese:'都', pinyin:'dōu', katakana:'ドウ', meaning:'みんな・すべて', category:'副詞' },
-  { chinese:'太', pinyin:'tài', katakana:'タイ', meaning:'とても（～すぎ）', category:'副詞' },
-  { chinese:'不', pinyin:'bù', katakana:'ブー', meaning:'～ではない', category:'副詞' },
-  { chinese:'一点儿', pinyin:'yìdiǎnr', katakana:'イーディアル', meaning:'少し', category:'副詞' },
-  { chinese:'的', pinyin:'de', katakana:'ド', meaning:'～の', category:'助詞' },
-  { chinese:'了', pinyin:'le', katakana:'ラ', meaning:'（完了・変化）', category:'助詞' },
-  { chinese:'吗', pinyin:'ma', katakana:'マ', meaning:'～か？（疑問）', category:'助詞' },
-  { chinese:'呢', pinyin:'ne', katakana:'ナ', meaning:'～は？（疑問）', category:'助詞' },
-  { chinese:'和', pinyin:'hé', katakana:'ハー', meaning:'～と', category:'接続詞' },
-  { chinese:'谢谢', pinyin:'xièxie', katakana:'シエシエ', meaning:'ありがとう', category:'挨拶' },
-  { chinese:'不客气', pinyin:'bú kèqi', katakana:'ブー クァチ', meaning:'どういたしまして', category:'挨拶' },
-  { chinese:'对不起', pinyin:'duìbuqǐ', katakana:'ドゥイブチー', meaning:'すみません', category:'挨拶' },
-  { chinese:'没关系', pinyin:'méi guānxi', katakana:'メイ グァンシ', meaning:'大丈夫です', category:'挨拶' },
-  { chinese:'再见', pinyin:'zàijiàn', katakana:'ザイジエン', meaning:'さようなら', category:'挨拶' },
-  { chinese:'喂', pinyin:'wèi', katakana:'ウェイ', meaning:'もしもし', category:'挨拶' },
-  { chinese:'请', pinyin:'qǐng', katakana:'チン', meaning:'どうぞ', category:'挨拶' },
+  // 数字
+  { chinese:'一', pinyin:'yī', katakana:'イー', meaning:'1', category:'数字', example:{ zh:'我有一个朋友。', pinyin:'Wǒ yǒu yī gè péngyou.', ja:'私には友達が一人います。' } },
+  { chinese:'二', pinyin:'èr', katakana:'アル', meaning:'2', category:'数字', example:{ zh:'我有二十块钱。', pinyin:'Wǒ yǒu èrshí kuài qián.', ja:'私は20元持っています。' } },
+  { chinese:'三', pinyin:'sān', katakana:'サン', meaning:'3', category:'数字', example:{ zh:'我家有三口人。', pinyin:'Wǒ jiā yǒu sān kǒu rén.', ja:'私の家には3人います。' } },
+  { chinese:'四', pinyin:'sì', katakana:'スー', meaning:'4', category:'数字', example:{ zh:'今天是四月。', pinyin:'Jīntiān shì sì yuè.', ja:'今日は4月です。' } },
+  { chinese:'五', pinyin:'wǔ', katakana:'ウー', meaning:'5', category:'数字', example:{ zh:'她五岁了。', pinyin:'Tā wǔ suì le.', ja:'彼女は5歳になりました。' } },
+  { chinese:'六', pinyin:'liù', katakana:'リィウ', meaning:'6', category:'数字', example:{ zh:'我六点起床。', pinyin:'Wǒ liù diǎn qǐchuáng.', ja:'私は6時に起きます。' } },
+  { chinese:'七', pinyin:'qī', katakana:'チー', meaning:'7', category:'数字', example:{ zh:'一周有七天。', pinyin:'Yī zhōu yǒu qī tiān.', ja:'一週間は7日あります。' } },
+  { chinese:'八', pinyin:'bā', katakana:'バー', meaning:'8', category:'数字', example:{ zh:'他八岁了。', pinyin:'Tā bā suì le.', ja:'彼は8歳になりました。' } },
+  { chinese:'九', pinyin:'jiǔ', katakana:'ジゥ', meaning:'9', category:'数字', example:{ zh:'现在九点了。', pinyin:'Xiànzài jiǔ diǎn le.', ja:'今9時になりました。' } },
+  { chinese:'十', pinyin:'shí', katakana:'シー', meaning:'10', category:'数字', example:{ zh:'一共十个人。', pinyin:'Yīgòng shí gè rén.', ja:'合計10人います。' } },
+  // 代詞
+  { chinese:'我', pinyin:'wǒ', katakana:'ウォー', meaning:'私', category:'代詞', example:{ zh:'我是学生。', pinyin:'Wǒ shì xuésheng.', ja:'私は学生です。' } },
+  { chinese:'你', pinyin:'nǐ', katakana:'ニー', meaning:'あなた', category:'代詞', example:{ zh:'你叫什么名字？', pinyin:'Nǐ jiào shénme míngzi?', ja:'あなたの名前は何ですか？' } },
+  { chinese:'他', pinyin:'tā', katakana:'ター', meaning:'彼', category:'代詞', example:{ zh:'他是我的朋友。', pinyin:'Tā shì wǒ de péngyou.', ja:'彼は私の友達です。' } },
+  { chinese:'她', pinyin:'tā', katakana:'ター', meaning:'彼女', category:'代詞', example:{ zh:'她很漂亮。', pinyin:'Tā hěn piàoliang.', ja:'彼女はとてもきれいです。' } },
+  { chinese:'我们', pinyin:'wǒmen', katakana:'ウォーメン', meaning:'私たち', category:'代詞', example:{ zh:'我们一起去吧。', pinyin:'Wǒmen yīqǐ qù ba.', ja:'一緒に行きましょう。' } },
+  { chinese:'他们', pinyin:'tāmen', katakana:'ターメン', meaning:'彼ら', category:'代詞', example:{ zh:'他们都是学生。', pinyin:'Tāmen dōu shì xuésheng.', ja:'彼らはみんな学生です。' } },
+  { chinese:'这', pinyin:'zhè', katakana:'ジャー', meaning:'これ', category:'代詞', example:{ zh:'这是什么？', pinyin:'Zhè shì shénme?', ja:'これは何ですか？' } },
+  { chinese:'那', pinyin:'nà', katakana:'ナー', meaning:'それ・あれ', category:'代詞', example:{ zh:'那是我的书。', pinyin:'Nà shì wǒ de shū.', ja:'あれは私の本です。' } },
+  { chinese:'哪', pinyin:'nǎ', katakana:'ナー', meaning:'どれ', category:'代詞', example:{ zh:'哪个是你的？', pinyin:'Nǎ gè shì nǐ de?', ja:'どれがあなたのですか？' } },
+  { chinese:'哪儿', pinyin:'nǎr', katakana:'ナール', meaning:'どこ', category:'代詞', example:{ zh:'你在哪儿？', pinyin:'Nǐ zài nǎr?', ja:'あなたはどこにいますか？' } },
+  { chinese:'谁', pinyin:'shéi', katakana:'シェイ', meaning:'誰', category:'代詞', example:{ zh:'他是谁？', pinyin:'Tā shì shéi?', ja:'彼は誰ですか？' } },
+  { chinese:'什么', pinyin:'shénme', katakana:'シェンマ', meaning:'何', category:'代詞', example:{ zh:'你吃什么？', pinyin:'Nǐ chī shénme?', ja:'あなたは何を食べますか？' } },
+  { chinese:'怎么', pinyin:'zěnme', katakana:'ゼンマ', meaning:'どうやって', category:'代詞', example:{ zh:'怎么去？', pinyin:'Zěnme qù?', ja:'どうやって行きますか？' } },
+  { chinese:'怎么样', pinyin:'zěnmeyàng', katakana:'ゼンマヤン', meaning:'どうですか', category:'代詞', example:{ zh:'你怎么样？', pinyin:'Nǐ zěnmeyàng?', ja:'お元気ですか？' } },
+  { chinese:'几', pinyin:'jǐ', katakana:'ジー', meaning:'いくつ', category:'代詞', example:{ zh:'你几岁？', pinyin:'Nǐ jǐ suì?', ja:'何歳ですか？' } },
+  { chinese:'多少', pinyin:'duōshao', katakana:'ドゥオシャオ', meaning:'どのくらい', category:'代詞', example:{ zh:'这个多少钱？', pinyin:'Zhège duōshao qián?', ja:'これはいくらですか？' } },
+  // 量詞
+  { chinese:'个', pinyin:'gè', katakana:'ガ', meaning:'（個数を数える助数詞）', category:'量詞', example:{ zh:'我有一个苹果。', pinyin:'Wǒ yǒu yī gè píngguǒ.', ja:'私はりんごが一つあります。' } },
+  { chinese:'本', pinyin:'běn', katakana:'ベン', meaning:'（本を数える助数詞）', category:'量詞', example:{ zh:'我有三本书。', pinyin:'Wǒ yǒu sān běn shū.', ja:'私は本が3冊あります。' } },
+  { chinese:'块', pinyin:'kuài', katakana:'クァイ', meaning:'（お金・塊を数える）', category:'量詞', example:{ zh:'这个五块钱。', pinyin:'Zhège wǔ kuài qián.', ja:'これは5元です。' } },
+  { chinese:'些', pinyin:'xiē', katakana:'シエ', meaning:'いくつかの', category:'量詞', example:{ zh:'我想买些东西。', pinyin:'Wǒ xiǎng mǎi xiē dōngxi.', ja:'私はいくつかのものを買いたいです。' } },
+  // 動詞
+  { chinese:'是', pinyin:'shì', katakana:'シー', meaning:'～です', category:'動詞', example:{ zh:'我是日本人。', pinyin:'Wǒ shì Rìběnrén.', ja:'私は日本人です。' } },
+  { chinese:'有', pinyin:'yǒu', katakana:'ヨウ', meaning:'持っている', category:'動詞', example:{ zh:'我有一个朋友。', pinyin:'Wǒ yǒu yī gè péngyou.', ja:'私には友達が一人います。' } },
+  { chinese:'没有', pinyin:'méiyǒu', katakana:'メイヨウ', meaning:'持っていない', category:'動詞', example:{ zh:'我没有钱。', pinyin:'Wǒ méiyǒu qián.', ja:'私はお金を持っていません。' } },
+  { chinese:'在', pinyin:'zài', katakana:'ザイ', meaning:'～にいる', category:'動詞', example:{ zh:'他在家。', pinyin:'Tā zài jiā.', ja:'彼は家にいます。' } },
+  { chinese:'叫', pinyin:'jiào', katakana:'ジアオ', meaning:'～という名前', category:'動詞', example:{ zh:'我叫田中。', pinyin:'Wǒ jiào Tiánzhōng.', ja:'私は田中といいます。' } },
+  { chinese:'认识', pinyin:'rènshi', katakana:'レンシ', meaning:'知り合う', category:'動詞', example:{ zh:'很高兴认识你。', pinyin:'Hěn gāoxìng rènshi nǐ.', ja:'あなたと知り合えてうれしいです。' } },
+  { chinese:'喜欢', pinyin:'xǐhuan', katakana:'シーホワン', meaning:'好き', category:'動詞', example:{ zh:'我喜欢吃苹果。', pinyin:'Wǒ xǐhuan chī píngguǒ.', ja:'私はりんごを食べるのが好きです。' } },
+  { chinese:'爱', pinyin:'ài', katakana:'アイ', meaning:'愛する', category:'動詞', example:{ zh:'我爱你。', pinyin:'Wǒ ài nǐ.', ja:'私はあなたを愛しています。' } },
+  { chinese:'想', pinyin:'xiǎng', katakana:'シアン', meaning:'～したい', category:'動詞', example:{ zh:'我想去中国。', pinyin:'Wǒ xiǎng qù Zhōngguó.', ja:'私は中国へ行きたいです。' } },
+  { chinese:'会', pinyin:'huì', katakana:'ホイ', meaning:'できる（習得）', category:'動詞', example:{ zh:'我会说汉语。', pinyin:'Wǒ huì shuō Hànyǔ.', ja:'私は中国語を話せます。' } },
+  { chinese:'能', pinyin:'néng', katakana:'ノン', meaning:'できる（能力）', category:'動詞', example:{ zh:'你能帮我吗？', pinyin:'Nǐ néng bāng wǒ ma?', ja:'手伝ってもらえますか？' } },
+  { chinese:'去', pinyin:'qù', katakana:'チュー', meaning:'行く', category:'動詞', example:{ zh:'我去学校。', pinyin:'Wǒ qù xuéxiào.', ja:'私は学校へ行きます。' } },
+  { chinese:'来', pinyin:'lái', katakana:'ライ', meaning:'来る', category:'動詞', example:{ zh:'他来了。', pinyin:'Tā lái le.', ja:'彼が来ました。' } },
+  { chinese:'回', pinyin:'huí', katakana:'ホイ', meaning:'帰る', category:'動詞', example:{ zh:'我回家了。', pinyin:'Wǒ huí jiā le.', ja:'私は家に帰りました。' } },
+  { chinese:'开', pinyin:'kāi', katakana:'カイ', meaning:'開く・運転する', category:'動詞', example:{ zh:'他会开车。', pinyin:'Tā huì kāi chē.', ja:'彼は車を運転できます。' } },
+  { chinese:'吃', pinyin:'chī', katakana:'チー', meaning:'食べる', category:'動詞', example:{ zh:'我吃米饭。', pinyin:'Wǒ chī mǐfàn.', ja:'私はご飯を食べます。' } },
+  { chinese:'喝', pinyin:'hē', katakana:'ハー', meaning:'飲む', category:'動詞', example:{ zh:'我喝茶。', pinyin:'Wǒ hē chá.', ja:'私はお茶を飲みます。' } },
+  { chinese:'看', pinyin:'kàn', katakana:'カン', meaning:'見る', category:'動詞', example:{ zh:'我看电视。', pinyin:'Wǒ kàn diànshì.', ja:'私はテレビを見ます。' } },
+  { chinese:'看见', pinyin:'kànjiàn', katakana:'カンジエン', meaning:'見える', category:'動詞', example:{ zh:'我看见他了。', pinyin:'Wǒ kànjiàn tā le.', ja:'私は彼を見かけました。' } },
+  { chinese:'听', pinyin:'tīng', katakana:'ティン', meaning:'聞く', category:'動詞', example:{ zh:'我听音乐。', pinyin:'Wǒ tīng yīnyuè.', ja:'私は音楽を聴きます。' } },
+  { chinese:'说', pinyin:'shuō', katakana:'シュオ', meaning:'話す', category:'動詞', example:{ zh:'他说汉语。', pinyin:'Tā shuō Hànyǔ.', ja:'彼は中国語を話します。' } },
+  { chinese:'读', pinyin:'dú', katakana:'ドゥー', meaning:'読む', category:'動詞', example:{ zh:'我读书。', pinyin:'Wǒ dú shū.', ja:'私は本を読みます。' } },
+  { chinese:'写', pinyin:'xiě', katakana:'シエ', meaning:'書く', category:'動詞', example:{ zh:'我写汉字。', pinyin:'Wǒ xiě hànzì.', ja:'私は漢字を書きます。' } },
+  { chinese:'买', pinyin:'mǎi', katakana:'マイ', meaning:'買う', category:'動詞', example:{ zh:'我买苹果。', pinyin:'Wǒ mǎi píngguǒ.', ja:'私はりんごを買います。' } },
+  { chinese:'做', pinyin:'zuò', katakana:'ズオ', meaning:'する・作る', category:'動詞', example:{ zh:'我做饭。', pinyin:'Wǒ zuò fàn.', ja:'私はご飯を作ります。' } },
+  { chinese:'坐', pinyin:'zuò', katakana:'ズオ', meaning:'座る', category:'動詞', example:{ zh:'请坐。', pinyin:'Qǐng zuò.', ja:'お座りください。' } },
+  { chinese:'住', pinyin:'zhù', katakana:'ジュー', meaning:'住む', category:'動詞', example:{ zh:'我住在北京。', pinyin:'Wǒ zhù zài Běijīng.', ja:'私は北京に住んでいます。' } },
+  { chinese:'睡觉', pinyin:'shuìjiào', katakana:'シュイジアオ', meaning:'寝る', category:'動詞', example:{ zh:'我睡觉了。', pinyin:'Wǒ shuìjiào le.', ja:'私は寝ます。' } },
+  { chinese:'打电话', pinyin:'dǎ diànhuà', katakana:'ダー ディエンホワ', meaning:'電話をかける', category:'動詞', example:{ zh:'我打电话给他。', pinyin:'Wǒ dǎ diànhuà gěi tā.', ja:'私は彼に電話をかけます。' } },
+  { chinese:'下雨', pinyin:'xiàyǔ', katakana:'シアユー', meaning:'雨が降る', category:'動詞', example:{ zh:'今天下雨了。', pinyin:'Jīntiān xiàyǔ le.', ja:'今日は雨が降りました。' } },
+  { chinese:'工作', pinyin:'gōngzuò', katakana:'ゴンズオ', meaning:'仕事をする', category:'動詞', example:{ zh:'我在公司工作。', pinyin:'Wǒ zài gōngsī gōngzuò.', ja:'私は会社で働いています。' } },
+  { chinese:'学习', pinyin:'xuéxí', katakana:'シュエシー', meaning:'学ぶ', category:'動詞', example:{ zh:'我学习汉语。', pinyin:'Wǒ xuéxí Hànyǔ.', ja:'私は中国語を学びます。' } },
+  // 形容詞
+  { chinese:'大', pinyin:'dà', katakana:'ダー', meaning:'大きい', category:'形容詞', example:{ zh:'这个苹果很大。', pinyin:'Zhège píngguǒ hěn dà.', ja:'このりんごはとても大きいです。' } },
+  { chinese:'小', pinyin:'xiǎo', katakana:'シアオ', meaning:'小さい', category:'形容詞', example:{ zh:'这只猫很小。', pinyin:'Zhè zhī māo hěn xiǎo.', ja:'この猫はとても小さいです。' } },
+  { chinese:'多', pinyin:'duō', katakana:'ドゥオ', meaning:'多い', category:'形容詞', example:{ zh:'这里人很多。', pinyin:'Zhèlǐ rén hěn duō.', ja:'ここは人がとても多いです。' } },
+  { chinese:'少', pinyin:'shǎo', katakana:'シャオ', meaning:'少ない', category:'形容詞', example:{ zh:'钱太少了。', pinyin:'Qián tài shǎo le.', ja:'お金が少なすぎます。' } },
+  { chinese:'好', pinyin:'hǎo', katakana:'ハオ', meaning:'良い', category:'形容詞', example:{ zh:'天气很好。', pinyin:'Tiānqì hěn hǎo.', ja:'天気がとても良いです。' } },
+  { chinese:'冷', pinyin:'lěng', katakana:'レン', meaning:'寒い', category:'形容詞', example:{ zh:'今天很冷。', pinyin:'Jīntiān hěn lěng.', ja:'今日はとても寒いです。' } },
+  { chinese:'热', pinyin:'rè', katakana:'ロァ', meaning:'熱い', category:'形容詞', example:{ zh:'这个茶很热。', pinyin:'Zhège chá hěn rè.', ja:'このお茶はとても熱いです。' } },
+  { chinese:'漂亮', pinyin:'piàoliang', katakana:'ピアオリアン', meaning:'きれい', category:'形容詞', example:{ zh:'她很漂亮。', pinyin:'Tā hěn piàoliang.', ja:'彼女はとてもきれいです。' } },
+  { chinese:'高兴', pinyin:'gāoxìng', katakana:'ガオシン', meaning:'嬉しい', category:'形容詞', example:{ zh:'我很高兴。', pinyin:'Wǒ hěn gāoxìng.', ja:'私はとても嬉しいです。' } },
+  // 名詞:人
+  { chinese:'爸爸', pinyin:'bàba', katakana:'バーバ', meaning:'お父さん', category:'名詞(人)', example:{ zh:'我爸爸是医生。', pinyin:'Wǒ bàba shì yīshēng.', ja:'私の父は医者です。' } },
+  { chinese:'妈妈', pinyin:'māma', katakana:'マーマ', meaning:'お母さん', category:'名詞(人)', example:{ zh:'妈妈在家。', pinyin:'Māma zài jiā.', ja:'お母さんは家にいます。' } },
+  { chinese:'儿子', pinyin:'érzi', katakana:'アルズ', meaning:'息子', category:'名詞(人)', example:{ zh:'他有一个儿子。', pinyin:'Tā yǒu yī gè érzi.', ja:'彼には息子が一人います。' } },
+  { chinese:'女儿', pinyin:"nǚ'ér", katakana:'ニュイアル', meaning:'娘', category:'名詞(人)', example:{ zh:'她的女儿很可爱。', pinyin:"Tā de nǚ'ér hěn kě'ài.", ja:'彼女の娘はとてもかわいいです。' } },
+  { chinese:'朋友', pinyin:'péngyou', katakana:'ポンヨウ', meaning:'友達', category:'名詞(人)', example:{ zh:'他是我的朋友。', pinyin:'Tā shì wǒ de péngyou.', ja:'彼は私の友達です。' } },
+  { chinese:'老师', pinyin:'lǎoshī', katakana:'ラオシー', meaning:'先生', category:'名詞(人)', example:{ zh:'我的老师很好。', pinyin:'Wǒ de lǎoshī hěn hǎo.', ja:'私の先生はとても良いです。' } },
+  { chinese:'学生', pinyin:'xuésheng', katakana:'シュエション', meaning:'学生', category:'名詞(人)', example:{ zh:'我是学生。', pinyin:'Wǒ shì xuésheng.', ja:'私は学生です。' } },
+  { chinese:'同学', pinyin:'tóngxué', katakana:'トンシュエ', meaning:'同級生', category:'名詞(人)', example:{ zh:'他是我的同学。', pinyin:'Tā shì wǒ de tóngxué.', ja:'彼は私の同級生です。' } },
+  { chinese:'先生', pinyin:'xiānsheng', katakana:'シエンション', meaning:'～さん（男性）', category:'名詞(人)', example:{ zh:'王先生，你好！', pinyin:'Wáng xiānsheng, nǐ hǎo!', ja:'王さん、こんにちは！' } },
+  { chinese:'小姐', pinyin:'xiǎojiě', katakana:'シアオジエ', meaning:'～さん（女性）', category:'名詞(人)', example:{ zh:'李小姐，你好！', pinyin:'Lǐ xiǎojiě, nǐ hǎo!', ja:'李さん、こんにちは！' } },
+  { chinese:'医生', pinyin:'yīshēng', katakana:'イーション', meaning:'医者', category:'名詞(人)', example:{ zh:'他是医生。', pinyin:'Tā shì yīshēng.', ja:'彼は医者です。' } },
+  { chinese:'人', pinyin:'rén', katakana:'レン', meaning:'人', category:'名詞(人)', example:{ zh:'这个人是谁？', pinyin:'Zhège rén shì shéi?', ja:'この人は誰ですか？' } },
+  { chinese:'家', pinyin:'jiā', katakana:'ジア', meaning:'家・家族', category:'名詞(人)', example:{ zh:'我家有五口人。', pinyin:'Wǒ jiā yǒu wǔ kǒu rén.', ja:'私の家族は5人です。' } },
+  // 名詞:動物
+  { chinese:'猫', pinyin:'māo', katakana:'マオ', meaning:'猫', category:'名詞(動物)', example:{ zh:'我有一只猫。', pinyin:'Wǒ yǒu yī zhī māo.', ja:'私は猫を一匹飼っています。' } },
+  { chinese:'狗', pinyin:'gǒu', katakana:'ゴウ', meaning:'犬', category:'名詞(動物)', example:{ zh:'他的狗很大。', pinyin:'Tā de gǒu hěn dà.', ja:'彼の犬はとても大きいです。' } },
+  // 名詞:食べ物
+  { chinese:'水', pinyin:'shuǐ', katakana:'シュイ', meaning:'水', category:'名詞(食べ物)', example:{ zh:'我喝水。', pinyin:'Wǒ hē shuǐ.', ja:'私は水を飲みます。' } },
+  { chinese:'茶', pinyin:'chá', katakana:'チャー', meaning:'お茶', category:'名詞(食べ物)', example:{ zh:'你喝茶吗？', pinyin:'Nǐ hē chá ma?', ja:'お茶を飲みますか？' } },
+  { chinese:'米饭', pinyin:'mǐfàn', katakana:'ミーファン', meaning:'ご飯', category:'名詞(食べ物)', example:{ zh:'我吃米饭。', pinyin:'Wǒ chī mǐfàn.', ja:'私はご飯を食べます。' } },
+  { chinese:'水果', pinyin:'shuǐguǒ', katakana:'シュイグオ', meaning:'果物', category:'名詞(食べ物)', example:{ zh:'我喜欢吃水果。', pinyin:'Wǒ xǐhuan chī shuǐguǒ.', ja:'私は果物を食べるのが好きです。' } },
+  { chinese:'苹果', pinyin:'píngguǒ', katakana:'ピングオ', meaning:'りんご', category:'名詞(食べ物)', example:{ zh:'这个苹果很甜。', pinyin:'Zhège píngguǒ hěn tián.', ja:'このりんごはとても甘いです。' } },
+  { chinese:'菜', pinyin:'cài', katakana:'ツァイ', meaning:'料理・野菜', category:'名詞(食べ物)', example:{ zh:'这个菜很好吃。', pinyin:'Zhège cài hěn hǎochī.', ja:'この料理はとてもおいしいです。' } },
+  // 名詞:物・場所
+  { chinese:'杯子', pinyin:'bēizi', katakana:'ベイズ', meaning:'コップ', category:'名詞(物・場所)', example:{ zh:'这个杯子是你的吗？', pinyin:'Zhège bēizi shì nǐ de ma?', ja:'このコップはあなたのですか？' } },
+  { chinese:'电脑', pinyin:'diànnǎo', katakana:'ディエンナオ', meaning:'パソコン', category:'名詞(物・場所)', example:{ zh:'我有一台电脑。', pinyin:'Wǒ yǒu yī tái diànnǎo.', ja:'私はパソコンを一台持っています。' } },
+  { chinese:'电视', pinyin:'diànshì', katakana:'ディエンシー', meaning:'テレビ', category:'名詞(物・場所)', example:{ zh:'我看电视。', pinyin:'Wǒ kàn diànshì.', ja:'私はテレビを見ます。' } },
+  { chinese:'电影', pinyin:'diànyǐng', katakana:'ディエンイン', meaning:'映画', category:'名詞(物・場所)', example:{ zh:'我喜欢看电影。', pinyin:'Wǒ xǐhuan kàn diànyǐng.', ja:'私は映画を見るのが好きです。' } },
+  { chinese:'飞机', pinyin:'fēijī', katakana:'フェイジー', meaning:'飛行機', category:'名詞(物・場所)', example:{ zh:'我坐飞机去中国。', pinyin:'Wǒ zuò fēijī qù Zhōngguó.', ja:'私は飛行機で中国へ行きます。' } },
+  { chinese:'出租车', pinyin:'chūzūchē', katakana:'チューズーチァー', meaning:'タクシー', category:'名詞(物・場所)', example:{ zh:'我坐出租车去。', pinyin:'Wǒ zuò chūzūchē qù.', ja:'私はタクシーで行きます。' } },
+  { chinese:'商店', pinyin:'shāngdiàn', katakana:'シャンディエン', meaning:'店', category:'名詞(物・場所)', example:{ zh:'商店在哪儿？', pinyin:'Shāngdiàn zài nǎr?', ja:'店はどこですか？' } },
+  { chinese:'饭店', pinyin:'fàndiàn', katakana:'ファンディエン', meaning:'レストラン・ホテル', category:'名詞(物・場所)', example:{ zh:'我们去饭店吃饭。', pinyin:'Wǒmen qù fàndiàn chīfàn.', ja:'私たちはレストランへ食事に行きます。' } },
+  { chinese:'医院', pinyin:'yīyuàn', katakana:'イーユエン', meaning:'病院', category:'名詞(物・場所)', example:{ zh:'他在医院。', pinyin:'Tā zài yīyuàn.', ja:'彼は病院にいます。' } },
+  { chinese:'学校', pinyin:'xuéxiào', katakana:'シュエシアオ', meaning:'学校', category:'名詞(物・場所)', example:{ zh:'我去学校了。', pinyin:'Wǒ qù xuéxiào le.', ja:'私は学校へ行きました。' } },
+  { chinese:'书', pinyin:'shū', katakana:'シュー', meaning:'本', category:'名詞(物・場所)', example:{ zh:'我读书。', pinyin:'Wǒ dú shū.', ja:'私は本を読みます。' } },
+  { chinese:'衣服', pinyin:'yīfu', katakana:'イーフ', meaning:'服', category:'名詞(物・場所)', example:{ zh:'这件衣服很漂亮。', pinyin:'Zhè jiàn yīfu hěn piàoliang.', ja:'この服はとてもきれいです。' } },
+  { chinese:'椅子', pinyin:'yǐzi', katakana:'イーズ', meaning:'椅子', category:'名詞(物・場所)', example:{ zh:'请坐椅子。', pinyin:'Qǐng zuò yǐzi.', ja:'椅子にお座りください。' } },
+  { chinese:'东西', pinyin:'dōngxi', katakana:'ドンシ', meaning:'もの', category:'名詞(物・場所)', example:{ zh:'我买东西。', pinyin:'Wǒ mǎi dōngxi.', ja:'私は買い物をします。' } },
+  { chinese:'钱', pinyin:'qián', katakana:'チエン', meaning:'お金', category:'名詞(物・場所)', example:{ zh:'我没有钱。', pinyin:'Wǒ méiyǒu qián.', ja:'私はお金がありません。' } },
+  { chinese:'字', pinyin:'zì', katakana:'ズー', meaning:'文字', category:'名詞(物・場所)', example:{ zh:'这个字怎么读？', pinyin:'Zhège zì zěnme dú?', ja:'この文字はどう読みますか？' } },
+  { chinese:'名字', pinyin:'míngzi', katakana:'ミンズ', meaning:'名前', category:'名詞(物・場所)', example:{ zh:'你叫什么名字？', pinyin:'Nǐ jiào shénme míngzi?', ja:'あなたの名前は何ですか？' } },
+  // 名詞:国・言語・天気
+  { chinese:'中国', pinyin:'Zhōngguó', katakana:'ジョングオ', meaning:'中国', category:'名詞(国・言語)', example:{ zh:'我想去中国。', pinyin:'Wǒ xiǎng qù Zhōngguó.', ja:'私は中国へ行きたいです。' } },
+  { chinese:'北京', pinyin:'Běijīng', katakana:'ベイジン', meaning:'北京', category:'名詞(国・言語)', example:{ zh:'北京是中国的首都。', pinyin:'Běijīng shì Zhōngguó de shǒudū.', ja:'北京は中国の首都です。' } },
+  { chinese:'汉语', pinyin:'Hànyǔ', katakana:'ハンユー', meaning:'中国語', category:'名詞(国・言語)', example:{ zh:'我学习汉语。', pinyin:'Wǒ xuéxí Hànyǔ.', ja:'私は中国語を学びます。' } },
+  { chinese:'天气', pinyin:'tiānqì', katakana:'ティエンチー', meaning:'天気', category:'名詞(国・言語)', example:{ zh:'今天天气很好。', pinyin:'Jīntiān tiānqì hěn hǎo.', ja:'今日は天気がとても良いです。' } },
+  // 時間詞
+  { chinese:'点', pinyin:'diǎn', katakana:'ディエン', meaning:'～時', category:'時間詞', example:{ zh:'现在几点？', pinyin:'Xiànzài jǐ diǎn?', ja:'今何時ですか？' } },
+  { chinese:'分钟', pinyin:'fēnzhōng', katakana:'フェンジョン', meaning:'～分間', category:'時間詞', example:{ zh:'等我五分钟。', pinyin:'Děng wǒ wǔ fēnzhōng.', ja:'5分待ってください。' } },
+  { chinese:'年', pinyin:'nián', katakana:'ニエン', meaning:'年', category:'時間詞', example:{ zh:'今年是什么年？', pinyin:'Jīnnián shì shénme nián?', ja:'今年は何年ですか？' } },
+  { chinese:'月', pinyin:'yuè', katakana:'ユエ', meaning:'月', category:'時間詞', example:{ zh:'我的生日是五月。', pinyin:'Wǒ de shēngrì shì wǔ yuè.', ja:'私の誕生日は5月です。' } },
+  { chinese:'星期', pinyin:'xīngqī', katakana:'シンチー', meaning:'週', category:'時間詞', example:{ zh:'一星期有七天。', pinyin:'Yī xīngqī yǒu qī tiān.', ja:'一週間は7日あります。' } },
+  { chinese:'号', pinyin:'hào', katakana:'ハオ', meaning:'～日', category:'時間詞', example:{ zh:'今天几号？', pinyin:'Jīntiān jǐ hào?', ja:'今日は何日ですか？' } },
+  { chinese:'今天', pinyin:'jīntiān', katakana:'ジンティエン', meaning:'今日', category:'時間詞', example:{ zh:'今天天气很好。', pinyin:'Jīntiān tiānqì hěn hǎo.', ja:'今日は天気がとても良いです。' } },
+  { chinese:'明天', pinyin:'míngtiān', katakana:'ミンティエン', meaning:'明日', category:'時間詞', example:{ zh:'明天见！', pinyin:'Míngtiān jiàn!', ja:'また明日！' } },
+  { chinese:'昨天', pinyin:'zuótiān', katakana:'ズオティエン', meaning:'昨日', category:'時間詞', example:{ zh:'昨天下雨了。', pinyin:'Zuótiān xiàyǔ le.', ja:'昨日は雨が降りました。' } },
+  { chinese:'现在', pinyin:'xiànzài', katakana:'シエンザイ', meaning:'今', category:'時間詞', example:{ zh:'现在几点？', pinyin:'Xiànzài jǐ diǎn?', ja:'今何時ですか？' } },
+  { chinese:'上午', pinyin:'shàngwǔ', katakana:'シャンウー', meaning:'午前', category:'時間詞', example:{ zh:'我上午工作。', pinyin:'Wǒ shàngwǔ gōngzuò.', ja:'私は午前中に仕事をします。' } },
+  { chinese:'下午', pinyin:'xiàwǔ', katakana:'シアウー', meaning:'午後', category:'時間詞', example:{ zh:'下午我去买东西。', pinyin:'Xiàwǔ wǒ qù mǎi dōngxi.', ja:'午後に買い物に行きます。' } },
+  { chinese:'中午', pinyin:'zhōngwǔ', katakana:'ジョンウー', meaning:'正午', category:'時間詞', example:{ zh:'中午我吃米饭。', pinyin:'Zhōngwǔ wǒ chī mǐfàn.', ja:'正午にご飯を食べます。' } },
+  { chinese:'时候', pinyin:'shíhou', katakana:'シーホウ', meaning:'時', category:'時間詞', example:{ zh:'你去的时候，我在家。', pinyin:'Nǐ qù de shíhou, wǒ zài jiā.', ja:'あなたが行くとき、私は家にいます。' } },
+  { chinese:'岁', pinyin:'suì', katakana:'スイ', meaning:'～歳', category:'時間詞', example:{ zh:'我二十岁。', pinyin:'Wǒ èrshí suì.', ja:'私は20歳です。' } },
+  // 方位詞
+  { chinese:'上', pinyin:'shàng', katakana:'シャン', meaning:'上', category:'方位詞', example:{ zh:'书在桌子上。', pinyin:'Shū zài zhuōzi shàng.', ja:'本は机の上にあります。' } },
+  { chinese:'下', pinyin:'xià', katakana:'シア', meaning:'下', category:'方位詞', example:{ zh:'猫在椅子下。', pinyin:'Māo zài yǐzi xià.', ja:'猫は椅子の下にいます。' } },
+  { chinese:'里', pinyin:'lǐ', katakana:'リー', meaning:'～の中', category:'方位詞', example:{ zh:'书在包里。', pinyin:'Shū zài bāo lǐ.', ja:'本はかばんの中にあります。' } },
+  { chinese:'前面', pinyin:'qiánmiàn', katakana:'チエンミエン', meaning:'前', category:'方位詞', example:{ zh:'学校在前面。', pinyin:'Xuéxiào zài qiánmiàn.', ja:'学校は前にあります。' } },
+  { chinese:'后面', pinyin:'hòumiàn', katakana:'ホウミエン', meaning:'後ろ', category:'方位詞', example:{ zh:'他在后面。', pinyin:'Tā zài hòumiàn.', ja:'彼は後ろにいます。' } },
+  // 副詞
+  { chinese:'很', pinyin:'hěn', katakana:'ヘン', meaning:'とても', category:'副詞', example:{ zh:'今天很热。', pinyin:'Jīntiān hěn rè.', ja:'今日はとても暑いです。' } },
+  { chinese:'都', pinyin:'dōu', katakana:'ドウ', meaning:'みんな・すべて', category:'副詞', example:{ zh:'我们都是学生。', pinyin:'Wǒmen dōu shì xuésheng.', ja:'私たちはみんな学生です。' } },
+  { chinese:'太', pinyin:'tài', katakana:'タイ', meaning:'とても（～すぎ）', category:'副詞', example:{ zh:'这个太贵了。', pinyin:'Zhège tài guì le.', ja:'これは高すぎます。' } },
+  { chinese:'不', pinyin:'bù', katakana:'ブー', meaning:'～ではない', category:'副詞', example:{ zh:'我不喜欢。', pinyin:'Wǒ bù xǐhuan.', ja:'私は好きではありません。' } },
+  { chinese:'一点儿', pinyin:'yìdiǎnr', katakana:'イーディアル', meaning:'少し', category:'副詞', example:{ zh:'我会说一点儿汉语。', pinyin:'Wǒ huì shuō yìdiǎnr Hànyǔ.', ja:'私は少し中国語が話せます。' } },
+  // 助詞
+  { chinese:'的', pinyin:'de', katakana:'ド', meaning:'～の', category:'助詞', example:{ zh:'这是我的书。', pinyin:'Zhè shì wǒ de shū.', ja:'これは私の本です。' } },
+  { chinese:'了', pinyin:'le', katakana:'ラ', meaning:'（完了・変化）', category:'助詞', example:{ zh:'他来了。', pinyin:'Tā lái le.', ja:'彼が来ました。' } },
+  { chinese:'吗', pinyin:'ma', katakana:'マ', meaning:'～か？（疑問）', category:'助詞', example:{ zh:'你是学生吗？', pinyin:'Nǐ shì xuésheng ma?', ja:'あなたは学生ですか？' } },
+  { chinese:'呢', pinyin:'ne', katakana:'ナ', meaning:'～は？（疑問）', category:'助詞', example:{ zh:'你呢？', pinyin:'Nǐ ne?', ja:'あなたは？' } },
+  // 接続詞
+  { chinese:'和', pinyin:'hé', katakana:'ハー', meaning:'～と', category:'接続詞', example:{ zh:'我和你一起去。', pinyin:'Wǒ hé nǐ yīqǐ qù.', ja:'私とあなたで一緒に行きます。' } },
+  // 挨拶
+  { chinese:'谢谢', pinyin:'xièxie', katakana:'シエシエ', meaning:'ありがとう', category:'挨拶', example:{ zh:'谢谢你的帮助。', pinyin:'Xièxie nǐ de bāngzhù.', ja:'助けてくれてありがとう。' } },
+  { chinese:'不客气', pinyin:'bú kèqi', katakana:'ブー クァチ', meaning:'どういたしまして', category:'挨拶', example:{ zh:'不客气，这是我应该做的。', pinyin:'Bú kèqi, zhè shì wǒ yīnggāi zuò de.', ja:'どういたしまして、当然のことです。' } },
+  { chinese:'对不起', pinyin:'duìbuqǐ', katakana:'ドゥイブチー', meaning:'すみません', category:'挨拶', example:{ zh:'对不起，我来晚了。', pinyin:'Duìbuqǐ, wǒ lái wǎn le.', ja:'すみません、遅れてしまいました。' } },
+  { chinese:'没关系', pinyin:'méi guānxi', katakana:'メイ グァンシ', meaning:'大丈夫です', category:'挨拶', example:{ zh:'没关系，没事的。', pinyin:'Méi guānxi, méi shì de.', ja:'大丈夫です、問題ありません。' } },
+  { chinese:'再见', pinyin:'zàijiàn', katakana:'ザイジエン', meaning:'さようなら', category:'挨拶', example:{ zh:'再见，明天见！', pinyin:'Zàijiàn, míngtiān jiàn!', ja:'さようなら、また明日！' } },
+  { chinese:'喂', pinyin:'wèi', katakana:'ウェイ', meaning:'もしもし', category:'挨拶', example:{ zh:'喂，你好！', pinyin:'Wèi, nǐ hǎo!', ja:'もしもし、こんにちは！' } },
+  { chinese:'请', pinyin:'qǐng', katakana:'チン', meaning:'どうぞ', category:'挨拶', example:{ zh:'请进！', pinyin:'Qǐng jìn!', ja:'どうぞお入りください！' } },
 ];
 
 let mode = 'random';
@@ -651,6 +694,13 @@ function checkAnswer(selected, btn, correct) {
   const resultMark = document.getElementById('result-mark');
   const resultAnswer = document.getElementById('result-answer');
 
+  const ex = currentWord.example;
+  const exampleHTML = ex ? `<div class="example-sentence">
+      <div class="example-zh">${ex.zh}</div>
+      <div class="example-pinyin">${ex.pinyin}</div>
+      <div class="example-ja">${ex.ja}</div>
+    </div>` : '';
+
   if (isCorrect) {
     score++;
     btn.classList.add('correct');
@@ -659,7 +709,7 @@ function checkAnswer(selected, btn, correct) {
     resultPanel.className = 'result-panel correct-panel show';
     resultAnswer.innerHTML = `<strong>${currentWord.chinese}</strong> は「${correct}」<br>
       <span class="pinyin-display">${currentWord.pinyin}</span><br>
-      <span class="katakana-display">（${currentWord.katakana}）</span>`;
+      <span class="katakana-display">（${currentWord.katakana}）</span>${exampleHTML}`;
   } else {
     btn.classList.add('incorrect');
     allBtns.forEach(b => {
@@ -672,7 +722,7 @@ function checkAnswer(selected, btn, correct) {
     resultPanel.className = 'result-panel incorrect-panel show';
     resultAnswer.innerHTML = `正解は「<strong>${correct}</strong>」<br>
       <span class="pinyin-display">${currentWord.pinyin}</span><br>
-      <span class="katakana-display">（${currentWord.katakana}）</span>`;
+      <span class="katakana-display">（${currentWord.katakana}）</span>${exampleHTML}`;
   }
 
   updateScore();
@@ -705,6 +755,7 @@ async function playAudio() {
   const zhVoice = voices.find(v => v.lang.startsWith('zh'));
 
   if (zhVoice) {
+    // ブラウザ内蔵の中国語ボイスで読み上げ
     const utter = new SpeechSynthesisUtterance(currentWord.chinese);
     utter.voice = zhVoice;
     utter.lang = 'zh-CN';
@@ -712,6 +763,7 @@ async function playAudio() {
     utter.pitch = 1;
     synth.speak(utter);
   } else {
+    // Google Translate TTS（AI音声）にフォールバック
     playGoogleTTS(voices);
   }
 }
@@ -723,6 +775,7 @@ function playGoogleTTS(voices) {
 
   currentAudio = new Audio(url);
   currentAudio.play().catch(() => {
+    // Google TTSも失敗した場合 → カタカナを日本語ボイスで読む
     const utter = new SpeechSynthesisUtterance(word.katakana);
     const jaVoice = voices ? voices.find(v => v.lang.startsWith('ja')) : null;
     if (jaVoice) utter.voice = jaVoice;
