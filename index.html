@@ -383,7 +383,6 @@
 
 <script>
 const WORDS = [
-  // 数字
   { chinese:'一', pinyin:'yī', katakana:'イー', meaning:'1', category:'数字' },
   { chinese:'二', pinyin:'èr', katakana:'アル', meaning:'2', category:'数字' },
   { chinese:'三', pinyin:'sān', katakana:'サン', meaning:'3', category:'数字' },
@@ -394,7 +393,6 @@ const WORDS = [
   { chinese:'八', pinyin:'bā', katakana:'バー', meaning:'8', category:'数字' },
   { chinese:'九', pinyin:'jiǔ', katakana:'ジゥ', meaning:'9', category:'数字' },
   { chinese:'十', pinyin:'shí', katakana:'シー', meaning:'10', category:'数字' },
-  // 代詞
   { chinese:'我', pinyin:'wǒ', katakana:'ウォー', meaning:'私', category:'代詞' },
   { chinese:'你', pinyin:'nǐ', katakana:'ニー', meaning:'あなた', category:'代詞' },
   { chinese:'他', pinyin:'tā', katakana:'ター', meaning:'彼', category:'代詞' },
@@ -411,12 +409,10 @@ const WORDS = [
   { chinese:'怎么样', pinyin:'zěnmeyàng', katakana:'ゼンマヤン', meaning:'どうですか', category:'代詞' },
   { chinese:'几', pinyin:'jǐ', katakana:'ジー', meaning:'いくつ', category:'代詞' },
   { chinese:'多少', pinyin:'duōshao', katakana:'ドゥオシャオ', meaning:'どのくらい', category:'代詞' },
-  // 量詞
   { chinese:'个', pinyin:'gè', katakana:'ガ', meaning:'（個数を数える助数詞）', category:'量詞' },
   { chinese:'本', pinyin:'běn', katakana:'ベン', meaning:'（本を数える助数詞）', category:'量詞' },
   { chinese:'块', pinyin:'kuài', katakana:'クァイ', meaning:'（お金・塊を数える）', category:'量詞' },
   { chinese:'些', pinyin:'xiē', katakana:'シエ', meaning:'いくつかの', category:'量詞' },
-  // 動詞
   { chinese:'是', pinyin:'shì', katakana:'シー', meaning:'～です', category:'動詞' },
   { chinese:'有', pinyin:'yǒu', katakana:'ヨウ', meaning:'持っている', category:'動詞' },
   { chinese:'没有', pinyin:'méiyǒu', katakana:'メイヨウ', meaning:'持っていない', category:'動詞' },
@@ -449,7 +445,6 @@ const WORDS = [
   { chinese:'下雨', pinyin:'xiàyǔ', katakana:'シアユー', meaning:'雨が降る', category:'動詞' },
   { chinese:'工作', pinyin:'gōngzuò', katakana:'ゴンズオ', meaning:'仕事をする', category:'動詞' },
   { chinese:'学习', pinyin:'xuéxí', katakana:'シュエシー', meaning:'学ぶ', category:'動詞' },
-  // 形容詞
   { chinese:'大', pinyin:'dà', katakana:'ダー', meaning:'大きい', category:'形容詞' },
   { chinese:'小', pinyin:'xiǎo', katakana:'シアオ', meaning:'小さい', category:'形容詞' },
   { chinese:'多', pinyin:'duō', katakana:'ドゥオ', meaning:'多い', category:'形容詞' },
@@ -459,7 +454,6 @@ const WORDS = [
   { chinese:'热', pinyin:'rè', katakana:'ロァ', meaning:'熱い', category:'形容詞' },
   { chinese:'漂亮', pinyin:'piàoliang', katakana:'ピアオリアン', meaning:'きれい', category:'形容詞' },
   { chinese:'高兴', pinyin:'gāoxìng', katakana:'ガオシン', meaning:'嬉しい', category:'形容詞' },
-  // 名詞:人
   { chinese:'爸爸', pinyin:'bàba', katakana:'バーバ', meaning:'お父さん', category:'名詞(人)' },
   { chinese:'妈妈', pinyin:'māma', katakana:'マーマ', meaning:'お母さん', category:'名詞(人)' },
   { chinese:'儿子', pinyin:'érzi', katakana:'アルズ', meaning:'息子', category:'名詞(人)' },
@@ -473,17 +467,14 @@ const WORDS = [
   { chinese:'医生', pinyin:'yīshēng', katakana:'イーション', meaning:'医者', category:'名詞(人)' },
   { chinese:'人', pinyin:'rén', katakana:'レン', meaning:'人', category:'名詞(人)' },
   { chinese:'家', pinyin:'jiā', katakana:'ジア', meaning:'家・家族', category:'名詞(人)' },
-  // 名詞:動物
   { chinese:'猫', pinyin:'māo', katakana:'マオ', meaning:'猫', category:'名詞(動物)' },
   { chinese:'狗', pinyin:'gǒu', katakana:'ゴウ', meaning:'犬', category:'名詞(動物)' },
-  // 名詞:食べ物
   { chinese:'水', pinyin:'shuǐ', katakana:'シュイ', meaning:'水', category:'名詞(食べ物)' },
   { chinese:'茶', pinyin:'chá', katakana:'チャー', meaning:'お茶', category:'名詞(食べ物)' },
   { chinese:'米饭', pinyin:'mǐfàn', katakana:'ミーファン', meaning:'ご飯', category:'名詞(食べ物)' },
   { chinese:'水果', pinyin:'shuǐguǒ', katakana:'シュイグオ', meaning:'果物', category:'名詞(食べ物)' },
   { chinese:'苹果', pinyin:'píngguǒ', katakana:'ピングオ', meaning:'りんご', category:'名詞(食べ物)' },
   { chinese:'菜', pinyin:'cài', katakana:'ツァイ', meaning:'料理・野菜', category:'名詞(食べ物)' },
-  // 名詞:物・場所
   { chinese:'杯子', pinyin:'bēizi', katakana:'ベイズ', meaning:'コップ', category:'名詞(物・場所)' },
   { chinese:'电脑', pinyin:'diànnǎo', katakana:'ディエンナオ', meaning:'パソコン', category:'名詞(物・場所)' },
   { chinese:'电视', pinyin:'diànshì', katakana:'ディエンシー', meaning:'テレビ', category:'名詞(物・場所)' },
@@ -501,12 +492,10 @@ const WORDS = [
   { chinese:'钱', pinyin:'qián', katakana:'チエン', meaning:'お金', category:'名詞(物・場所)' },
   { chinese:'字', pinyin:'zì', katakana:'ズー', meaning:'文字', category:'名詞(物・場所)' },
   { chinese:'名字', pinyin:'míngzi', katakana:'ミンズ', meaning:'名前', category:'名詞(物・場所)' },
-  // 名詞:国・言語・天気
   { chinese:'中国', pinyin:'Zhōngguó', katakana:'ジョングオ', meaning:'中国', category:'名詞(国・言語)' },
   { chinese:'北京', pinyin:'Běijīng', katakana:'ベイジン', meaning:'北京', category:'名詞(国・言語)' },
   { chinese:'汉语', pinyin:'Hànyǔ', katakana:'ハンユー', meaning:'中国語', category:'名詞(国・言語)' },
   { chinese:'天气', pinyin:'tiānqì', katakana:'ティエンチー', meaning:'天気', category:'名詞(国・言語)' },
-  // 時間詞
   { chinese:'点', pinyin:'diǎn', katakana:'ディエン', meaning:'～時', category:'時間詞' },
   { chinese:'分钟', pinyin:'fēnzhōng', katakana:'フェンジョン', meaning:'～分間', category:'時間詞' },
   { chinese:'年', pinyin:'nián', katakana:'ニエン', meaning:'年', category:'時間詞' },
@@ -522,26 +511,21 @@ const WORDS = [
   { chinese:'中午', pinyin:'zhōngwǔ', katakana:'ジョンウー', meaning:'正午', category:'時間詞' },
   { chinese:'时候', pinyin:'shíhou', katakana:'シーホウ', meaning:'時', category:'時間詞' },
   { chinese:'岁', pinyin:'suì', katakana:'スイ', meaning:'～歳', category:'時間詞' },
-  // 方位詞
   { chinese:'上', pinyin:'shàng', katakana:'シャン', meaning:'上', category:'方位詞' },
   { chinese:'下', pinyin:'xià', katakana:'シア', meaning:'下', category:'方位詞' },
   { chinese:'里', pinyin:'lǐ', katakana:'リー', meaning:'～の中', category:'方位詞' },
   { chinese:'前面', pinyin:'qiánmiàn', katakana:'チエンミエン', meaning:'前', category:'方位詞' },
   { chinese:'后面', pinyin:'hòumiàn', katakana:'ホウミエン', meaning:'後ろ', category:'方位詞' },
-  // 副詞
   { chinese:'很', pinyin:'hěn', katakana:'ヘン', meaning:'とても', category:'副詞' },
   { chinese:'都', pinyin:'dōu', katakana:'ドウ', meaning:'みんな・すべて', category:'副詞' },
   { chinese:'太', pinyin:'tài', katakana:'タイ', meaning:'とても（～すぎ）', category:'副詞' },
   { chinese:'不', pinyin:'bù', katakana:'ブー', meaning:'～ではない', category:'副詞' },
   { chinese:'一点儿', pinyin:'yìdiǎnr', katakana:'イーディアル', meaning:'少し', category:'副詞' },
-  // 助詞
   { chinese:'的', pinyin:'de', katakana:'ド', meaning:'～の', category:'助詞' },
   { chinese:'了', pinyin:'le', katakana:'ラ', meaning:'（完了・変化）', category:'助詞' },
   { chinese:'吗', pinyin:'ma', katakana:'マ', meaning:'～か？（疑問）', category:'助詞' },
   { chinese:'呢', pinyin:'ne', katakana:'ナ', meaning:'～は？（疑問）', category:'助詞' },
-  // 接続詞
   { chinese:'和', pinyin:'hé', katakana:'ハー', meaning:'～と', category:'接続詞' },
-  // 挨拶
   { chinese:'谢谢', pinyin:'xièxie', katakana:'シエシエ', meaning:'ありがとう', category:'挨拶' },
   { chinese:'不客气', pinyin:'bú kèqi', katakana:'ブー クァチ', meaning:'どういたしまして', category:'挨拶' },
   { chinese:'对不起', pinyin:'duìbuqǐ', katakana:'ドゥイブチー', meaning:'すみません', category:'挨拶' },
@@ -558,10 +542,19 @@ let currentWord = null;
 let score = 0;
 let answered = false;
 let synth = window.speechSynthesis;
-let voices = [];
 
-synth.onvoiceschanged = () => { voices = synth.getVoices(); };
-setTimeout(() => { voices = synth.getVoices(); }, 300);
+function loadVoices() {
+  return new Promise(resolve => {
+    const v = synth.getVoices();
+    if (v.length) { resolve(v); return; }
+    const handler = () => {
+      synth.removeEventListener('voiceschanged', handler);
+      resolve(synth.getVoices());
+    };
+    synth.addEventListener('voiceschanged', handler);
+    setTimeout(() => resolve(synth.getVoices()), 2000);
+  });
+}
 
 function setMode(m) {
   mode = m;
@@ -702,17 +695,27 @@ function updateScore() {
   document.getElementById('score-text').textContent = score;
 }
 
-function playAudio() {
+async function playAudio() {
   if (!currentWord) return;
   synth.cancel();
-  const utter = new SpeechSynthesisUtterance(currentWord.chinese);
-  utter.lang = 'zh-CN';
+
+  const voices = await loadVoices();
+  const zhVoice = voices.find(v => v.lang.startsWith('zh'));
+
+  const utter = new SpeechSynthesisUtterance();
   utter.rate = 0.85;
   utter.pitch = 1;
 
-  voices = synth.getVoices();
-  const zhVoice = voices.find(v => v.lang.startsWith('zh'));
-  if (zhVoice) utter.voice = zhVoice;
+  if (zhVoice) {
+    utter.voice = zhVoice;
+    utter.lang = 'zh-CN';
+    utter.text = currentWord.chinese;
+  } else {
+    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    if (jaVoice) utter.voice = jaVoice;
+    utter.lang = 'ja-JP';
+    utter.text = currentWord.katakana;
+  }
 
   synth.speak(utter);
 }
