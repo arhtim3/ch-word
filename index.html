@@ -542,6 +542,7 @@ let currentWord = null;
 let score = 0;
 let answered = false;
 let synth = window.speechSynthesis;
+let currentAudio = null;
 
 function loadVoices() {
   return new Promise(resolve => {
@@ -698,26 +699,37 @@ function updateScore() {
 async function playAudio() {
   if (!currentWord) return;
   synth.cancel();
+  if (currentAudio) { currentAudio.pause(); currentAudio = null; }
 
   const voices = await loadVoices();
   const zhVoice = voices.find(v => v.lang.startsWith('zh'));
 
-  const utter = new SpeechSynthesisUtterance();
-  utter.rate = 0.85;
-  utter.pitch = 1;
-
   if (zhVoice) {
+    const utter = new SpeechSynthesisUtterance(currentWord.chinese);
     utter.voice = zhVoice;
     utter.lang = 'zh-CN';
-    utter.text = currentWord.chinese;
+    utter.rate = 0.85;
+    utter.pitch = 1;
+    synth.speak(utter);
   } else {
-    const jaVoice = voices.find(v => v.lang.startsWith('ja'));
+    playGoogleTTS(voices);
+  }
+}
+
+function playGoogleTTS(voices) {
+  const word = currentWord;
+  const url = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&ttsspeed=0.8&q='
+    + encodeURIComponent(word.chinese);
+
+  currentAudio = new Audio(url);
+  currentAudio.play().catch(() => {
+    const utter = new SpeechSynthesisUtterance(word.katakana);
+    const jaVoice = voices ? voices.find(v => v.lang.startsWith('ja')) : null;
     if (jaVoice) utter.voice = jaVoice;
     utter.lang = 'ja-JP';
-    utter.text = currentWord.katakana;
-  }
-
-  synth.speak(utter);
+    utter.rate = 0.85;
+    synth.speak(utter);
+  });
 }
 
 function showFinish() {
